@@ -17,7 +17,7 @@
         <surefire-plugin.version>3.5.0</surefire-plugin.version>
     </properties>
 
-    <dependencyManagement>
+<dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>${quarkus.platform.group-id}</groupId>
@@ -28,8 +28,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+ 
     <dependencies>
+ 
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-orm</artifactId>
+        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy</artifactId>
@@ -49,7 +58,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+ 
     <build>
         <plugins>
             <plugin>
@@ -106,7 +115,7 @@
             </plugin>
         </plugins>
     </build>
-
+ 
     <profiles>
         <profile>
             <id>native</id>
@@ -122,3 +131,4 @@
         </profile>
     </profiles>
 </project>
+ 
