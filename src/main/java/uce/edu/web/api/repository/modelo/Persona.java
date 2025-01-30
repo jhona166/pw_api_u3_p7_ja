@@ -1,4 +1,5 @@
 package uce.edu.web.api.repository.modelo;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -24,8 +25,17 @@ public class Persona {
     @Column(name = "pers_fechaNacimiento")
     private LocalDateTime fechaNacimiento;
 
-    // SET Y GET
+    public Persona() {
+    }
 
+    public Persona(Integer id, String nombre, String apellido, LocalDateTime fechaNacimiento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    // SET Y GET
     public Integer getId() {
         return id;
     }
@@ -57,7 +67,7 @@ public class Persona {
     public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+
     
-
-}
-
+}   

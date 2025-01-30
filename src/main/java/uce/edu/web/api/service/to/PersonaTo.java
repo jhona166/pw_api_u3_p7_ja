@@ -1,33 +1,29 @@
-package uce.edu.web.service.to;
+package uce.edu.web.api.service.to;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PersonaTo implements Serializable {
-  
-    
-    private Integer id;
-   
+public class PersonaTo implements Serializable{
+    private Integer id ;
     private String nombre;
-   
     private String apellido;
-   
     private LocalDateTime fechaNacimiento;
-
-    public PersonaTo(){
-
+    private static final long serialVersionUID = -1544399202104638172L;
+    
+    
+    
+    public PersonaTo() {
     }
 
-    public PersonaTo(String apellido, LocalDateTime fechaNacimiento, Integer id, String nombre) {
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
+    public PersonaTo(Integer id, String nombre, String apellido, LocalDateTime fechaNacimiento) {
         this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-  
 
-    //SET and GET
+    //SET AND GET
     public Integer getId() {
         return id;
     }
@@ -61,5 +57,7 @@ public class PersonaTo implements Serializable {
     }
 
 
+
+    
 
 }
