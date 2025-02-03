@@ -50,7 +50,7 @@ public class PersonaController {
     public void actualizarParcial(PersonaTo persona) {
         PersonaTo tmp =this.iPersonaService.buscarPorId(persona.getId());
         tmp.setNombre(persona.getNombre());
-        this.iPersonaService.actualizar(persona);
+        this.iPersonaService.actualizar(tmp);
     }
 
 }
