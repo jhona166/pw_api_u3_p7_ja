@@ -1,5 +1,7 @@
 package uce.edu.web.api.controler;
 
+import java.util.List;
+
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -8,6 +10,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.QueryParam;
 import uce.edu.web.api.service.IPersonaService;
 import uce.edu.web.api.service.to.PersonaTo;
 
@@ -41,7 +44,7 @@ public class PersonaController {
 
     @DELETE
     @Path("/{id}")
-    public void borrar(PersonaTo persona,@PathParam("id") Integer id) {
+    public void borrar(@PathParam("id") Integer id) {
        
         this.iPersonaService.borrar(id);
     }
@@ -50,12 +53,36 @@ public class PersonaController {
     @PATCH
     @Path("/{id}/nuevo/{cedula}")
     public void actualizarParcial(PersonaTo persona,@PathParam("id") Integer id,@PathParam("cedula") String cedula) {
-        System.err.println(cedula);
-        PersonaTo tmp =this.iPersonaService.buscarPorId(persona.getId());
+        System.out.println(cedula);
+        PersonaTo tmp =this.iPersonaService.buscarPorId(id);
         tmp.setNombre(persona.getNombre());
         this.iPersonaService.actualizar(tmp);
 
         
     }
+
+
+    @GET
+    @Path("")
+    public List<PersonaTo> buscarTodos() {
+      return this.iPersonaService.buscarTodos();
+    }
+
+    //solo ? cuando chocan los path
+    @GET
+    @Path("/porNombre")
+    public List<PersonaTo> buscarPorNombre(@QueryParam("nombre") String nombre) {
+       
+        return this.iPersonaService.buscarPorNombre(nombre);
+    }
+
+    @GET
+    @Path("/porNombreApellido")
+    public List<PersonaTo> buscarPorNombre(@QueryParam("nombre") String nombre,@QueryParam("apellido") String apellido) {
+       
+        return this.iPersonaService.buscarPorNombreApellido(nombre,apellido);
+    }
+
+
 
 }

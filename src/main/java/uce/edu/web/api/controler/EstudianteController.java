@@ -7,7 +7,6 @@ import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
-
 import uce.edu.web.api.service.IEstudianteService;
 import uce.edu.web.api.service.to.EstudianteTo;
 
@@ -52,4 +51,5 @@ public class EstudianteController {
         this.iEstudianteService.borrar(id);
     }
 
+  
 }
