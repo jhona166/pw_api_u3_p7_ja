@@ -56,8 +56,14 @@ public class PersonaServiceImpl implements IPersonaService{
 
     @Override
     public List<PersonaTo> buscarPorNombre(String nombre) {
-        List<Persona> personas = this.iPersonaRepository.buscarPorNombre(nombre);
-        return personas.stream().map(this.mapTo).toList();
+        try {
+            List<Persona> personas = this.iPersonaRepository.buscarPorNombre(nombre);
+            return personas.stream().map(this.mapTo).toList();
+        } catch (Exception e) {
+           
+            e.printStackTrace();
+            return List.of();
+        }
     }
 
     @Override

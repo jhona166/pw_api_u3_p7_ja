@@ -51,8 +51,13 @@ public class PersonaRepositoryImpl implements IPersonaRepository {
     public List<Persona> buscarPorNombre(String nombre) {
         TypedQuery<Persona> myQuery  =  this.entityManager.createQuery("select p from Persona p where p.nombre=:nombre",Persona.class);
         myQuery.setParameter("nombre", nombre);
-        return  myQuery.getResultList();
-    
+        try {
+            return myQuery.getResultList();
+        } catch (Exception e) {
+           
+            System.err.println("Error " + e.getMessage());
+            return null;
+        }
     }
 
     @Override
