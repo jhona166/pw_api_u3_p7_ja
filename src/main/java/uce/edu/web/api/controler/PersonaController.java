@@ -3,6 +3,7 @@ package uce.edu.web.api.controler;
 import java.util.List;
 
 import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
@@ -36,8 +37,10 @@ public class PersonaController {
                         .entity(this.iPersonaService.buscarPorId(id)).build();
       //.header("valor1",500)
     }
+
     @POST
     @Path("")
+    @Consumes(MediaType.APPLICATION_JSON)
     //http://localhost:8080/matriculaAPI/v1.1/personas/guardar
     public void guardar(PersonaTo persona) {
         this.iPersonaService.guardar(persona);
@@ -57,6 +60,23 @@ public class PersonaController {
     }
     //Poner anotacion a los objetods que van a viajar en el request 
 
+
+    //actualizacion parcial
+    @PATCH
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    public PersonaTo actualizarParcial(PersonaTo persona,@PathParam("id") Integer id,@PathParam("cedula") String cedula) {
+        
+        System.out.println(cedula);
+        PersonaTo tmp =this.iPersonaService.buscarPorId(id);
+        tmp.setNombre(persona.getNombre());
+        this.iPersonaService.actualizar(tmp);
+        return tmp;
+        
+    }
+
+/* 
     @PATCH
     @Path("/{id}/nuevo/{cedula}")
     public void actualizarParcial(PersonaTo persona,@PathParam("id") Integer id,@PathParam("cedula") String cedula) {
@@ -66,8 +86,7 @@ public class PersonaController {
         this.iPersonaService.actualizar(tmp);
 
         
-    }
-
+    }*/
 
     @GET
     @Path("")
