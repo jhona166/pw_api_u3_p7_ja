@@ -27,7 +27,7 @@ public class PersonaController {
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response buscarPorId(@PathParam("id") Integer id ) {
     //public PersonaTo buscarPorId(@PathParam("id") Integer id) {
        // Integer id=1;
@@ -64,8 +64,8 @@ public class PersonaController {
     //actualizacion parcial
     @PATCH
     @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_XML)
-    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public PersonaTo actualizarParcial(PersonaTo persona,@PathParam("id") Integer id,@PathParam("cedula") String cedula) {
         
         System.out.println(cedula);
