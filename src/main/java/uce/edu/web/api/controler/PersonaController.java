@@ -22,7 +22,7 @@ import uce.edu.web.api.service.to.PersonaTo;
 @Path("/personas")
 public class PersonaController {
     
- @Inject
+    @Inject
     private IPersonaService iPersonaService;
 
     @GET
